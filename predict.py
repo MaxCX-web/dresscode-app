@@ -1,18 +1,29 @@
-# ✅ Инференс обученной модели дресс-кода (predict.py)
-import torch
-from torchvision import transforms, models
-from PIL import Image
 import os
+import torch
+import requests
+from PIL import Image
+from torchvision import transforms, models
 
-MODEL_PATH = 'dresscode_model.pt'
-LABELS = ['FAIL', 'OK']  # Порядок должен совпадать с ImageFolder
+MODEL_PATH = "dresscode_model.pt"
+MODEL_URL = "https://drive.google.com/uc?export=download&id=12BCn9rwR6_DQltSNdRQgA-LoesALXRoR"  # замените на прямую ссылку
 
-# Преобразования как при обучении
+LABELS = ['FAIL', 'OK']
+
 transform = transforms.Compose([
     transforms.Resize((224, 224)),
     transforms.ToTensor(),
     transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
 ])
+
+def download_model():
+    if not os.path.exists(MODEL_PATH):
+        print("⬇️ Скачиваем модель dresscode_model.pt ...")
+        r = requests.get(MODEL_URL)
+        with open(MODEL_PATH, "wb") as f:
+            f.write(r.content)
+        print("✅ Модель успешно загружена")
+
+download_model()
 
 def load_model():
     model = models.resnet18(pretrained=False)

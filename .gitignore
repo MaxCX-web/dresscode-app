@@ -1,0 +1,29 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Virtual environments
+.venv/
+env/
+venv/
+ENV/
+
+# IDE settings
+.vscode/
+.idea/
+
+# Бинарные/временные файлы
+uploads/
+*.sqlite3
+*.db
+*.pdf
+*.pt
+*.tmp
+*.bak
+*.swp
+
+# Node.js (если есть фронтенд)
+node_modules/
+.next/
+dist/

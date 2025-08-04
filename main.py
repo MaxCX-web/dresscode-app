@@ -7,6 +7,7 @@ import uuid
 import os
 from predict import predict_image
 from sqlite_logger import log_submission
+import download_model  # автоматически загрузит модель при запуске
 
 app = FastAPI()
 
