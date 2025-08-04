@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+fpdf
+pillow
+torch
+torchvision
+python-multipart
